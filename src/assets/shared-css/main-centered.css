@@ -1,0 +1,12 @@
+main {
+    width: 100%;
+    min-height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+main>* {
+    align-self: center;
+    text-align: center;
+}

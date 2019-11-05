@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../auth.service';
-import { ComplaintsService } from '../complaints.service';
+import { AuthService } from '../services/auth.service';
+import { ComplaintsService } from '../services/complaints.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
+  public Loading: boolean;
 
   constructor(public authService: AuthService, private complaintsService: ComplaintsService) { }
 
@@ -15,7 +16,7 @@ export class HomeComponent implements OnInit {
   }
 
   login(){
-    // this.spinner.show();
+    this.Loading = true;
     this.authService.login();
   }
 
@@ -26,7 +27,7 @@ export class HomeComponent implements OnInit {
   }
 
   Logout(){
-    this.authService.Logout();
+    this.authService.logout();
   }
 
 }

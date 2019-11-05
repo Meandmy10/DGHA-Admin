@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AuthService } from '../auth.service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-call-back',
@@ -14,13 +14,16 @@ export class CallBackComponent implements OnInit {
   constructor(private authService: AuthService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
- 
-    // check for error
-    // if (this.route.snapshot.fragment.indexOf('error') >= 0) {
-    //     this.error=true;
-    //     return;
-    // }
-    this.authService.completeAuthentication();
+    var errors = this.route.snapshot.queryParams['error'];
+
+    // is errors exist
+    if (errors) {
+      this.error = true;
+      console.error(errors);
+    }
+    else{
+      this.authService.completeAuthentication();
+    }
   }
 
 }

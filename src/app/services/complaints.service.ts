@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AuthService } from './auth.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Config } from './config';
+import { Config } from '../config';
 import { ApiService } from './api.service';
 import { Complaint } from './compaint';
 import { catchError, retry } from 'rxjs/operators';

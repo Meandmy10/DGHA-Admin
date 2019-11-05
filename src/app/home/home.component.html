@@ -1,5 +1,31 @@
-<main>
-  <button *ngIf="!authService.isAuthenticated()" (click)="login()">Login</button>
-  <button *ngIf="authService.isAuthenticated()" (click)="request()">Call API</button>
-  <button *ngIf="authService.isAuthenticated()" (click)="Logout()">Logout</button>
+<!-- User isn't Authenticated -->
+<main *ngIf="!authService.isAuthenticated()">
+  <!-- Page isn't Loading -->
+  <div *ngIf="!Loading">
+    <h1>Welcome to DGHA-Admin!</h1>
+    <p>Press Login below to begin</p>
+    <button (click)="login()" type="button" class="btn btn-primary">Login</button>
+  </div>
+  <!-- Page is Loading -->
+  <div *ngIf="Loading" class="spinner-border" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+</main>
+<!-- User is Authenticated -->
+<main *ngIf="authService.isAuthenticated()">
+  <!-- User is Admin -->
+  <div *ngIf="authService.isAdmin()">
+    <h1 [innerHTML]="'Welcome ' + authService.email | emailBreak"></h1>
+    <p>Select what you would like to do:</p>
+    <nav class="nav">
+      <a class="nav-link">Link</a>
+      <button (click)="request()" type="button" class="btn btn-info">Call API</button>
+      <button (click)="Logout()" type="button" class="btn btn-secondary">Logout</button>
+    </nav>
+  </div>
+  <!-- User isn't Admin -->
+  <div *ngIf="!authService.isAdmin()" class="alert alert-warning" role="alert">
+    <p>It appears that your not an administrator! Ask another administrator if you think this is a mistake.</p>
+    <button (click)="Logout()" type="button" class="btn btn-primary">Logout</button>
+  </div>
 </main>

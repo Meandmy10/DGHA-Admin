@@ -44,7 +44,15 @@ export class AuthService {
     return `${this.User.token_type} ${this.User.access_token}`;
   }
 
-  Logout() {
+  isAdmin(): boolean {
+    return this.User.profile.role == "Administrator";
+  }
+
+  get email(){
+    return this.User.profile.email;
+  }
+
+  logout() {
     this.Manager.signoutRedirect();
   }
 
@@ -56,8 +64,9 @@ export class AuthService {
         client_secret: "secret",
         redirect_uri: "http://localhost:4200/callback",
         response_type: "code",
-        scope:"openid api",
-        post_logout_redirect_uri : "http://localhost:4200/home",
+        scope:"openid api role email",
+        post_logout_redirect_uri : "http://localhost:4200/home"
+        
       };
     }
     else{
@@ -67,8 +76,8 @@ export class AuthService {
         client_secret: "secret",
         redirect_uri: "https://dgha-admin.azurewebsites.net/callback",
         response_type: "code",
-        scope:"openid api",
-        post_logout_redirect_uri : "https://dgha-admin.azurewebsites.net/home",
+        scope:"openid api role email",
+        post_logout_redirect_uri : "https://dgha-admin.azurewebsites.net/home"
       };
     }
   }
