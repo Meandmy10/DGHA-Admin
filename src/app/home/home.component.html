@@ -17,15 +17,12 @@
   <div *ngIf="authService.isAdmin()">
     <h1 [innerHTML]="'Welcome ' + authService.email | emailBreak"></h1>
     <p>Select what you would like to do:</p>
-    <nav class="nav">
-      <a class="nav-link">Link</a>
-      <button (click)="request()" type="button" class="btn btn-info">Call API</button>
-      <button (click)="Logout()" type="button" class="btn btn-secondary">Logout</button>
-    </nav>
+    <app-navigation></app-navigation>
   </div>
   <!-- User isn't Admin -->
   <div *ngIf="!authService.isAdmin()" class="alert alert-warning" role="alert">
-    <p>It appears that your not an administrator! Ask another administrator if you think this is a mistake.</p>
-    <button (click)="Logout()" type="button" class="btn btn-primary">Logout</button>
+    <p>It appears that your not an administrator {{authService.email}}.<br />
+      Ask another administrator if you think this is a mistake.</p>
+    <button (click)="Logout()" type="button" class="btn btn-primary"a>Logout</button>
   </div>
 </main>

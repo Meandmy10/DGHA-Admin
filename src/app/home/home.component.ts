@@ -10,7 +10,7 @@ import { ComplaintsService } from '../services/complaints.service';
 export class HomeComponent implements OnInit {
   public Loading: boolean;
 
-  constructor(public authService: AuthService, private complaintsService: ComplaintsService) { }
+  constructor(public authService: AuthService) { }
 
   ngOnInit() {
   }
@@ -18,12 +18,6 @@ export class HomeComponent implements OnInit {
   login(){
     this.Loading = true;
     this.authService.login();
-  }
-
-  request(){
-    this.complaintsService.GetComplaints().subscribe(complaints => {
-      console.log(complaints);
-    })
   }
 
   Logout(){
