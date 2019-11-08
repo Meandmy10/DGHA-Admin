@@ -1,5 +1,5 @@
 <!-- User isn't Authenticated -->
-<main *ngIf="!authService.isAuthenticated()">
+<main *ngIf="!(authService.authStatus$ | async)">
   <!-- Page isn't Loading -->
   <div *ngIf="!Loading">
     <h1>Welcome to DGHA-Admin!</h1>
@@ -12,12 +12,12 @@
   </div>
 </main>
 <!-- User is Authenticated -->
-<main *ngIf="authService.isAuthenticated()">
+<main *ngIf="authService.authStatus$ | async">
   <!-- User is Admin -->
   <div *ngIf="authService.isAdmin()">
     <h1 [innerHTML]="'Welcome ' + authService.email | emailBreak"></h1>
     <p>Select what you would like to do:</p>
-    <app-navigation></app-navigation>
+    <navigation></navigation>
   </div>
   <!-- User isn't Admin -->
   <div *ngIf="!authService.isAdmin()" class="alert alert-warning" role="alert">

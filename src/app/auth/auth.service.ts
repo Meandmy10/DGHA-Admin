@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment.prod';
 import { UserManager, UserManagerSettings, User } from 'oidc-client';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { isDevMode } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -20,8 +20,8 @@ export class AuthService {
 
   constructor(private router: Router) {
     this.Manager.getUser().then(user => {
-       this.User = user;
-       this._authStatus.next(this.isAuthenticated());
+      this.User = user;
+      this._authStatus.next(this.isAuthenticated());
     });
    }
    
@@ -37,7 +37,8 @@ export class AuthService {
   }
 
   isAuthenticated(): boolean {
-    return this.User != null && !this.User.expired;
+    const authed: boolean = this.User != null && !this.User.expired;
+    return authed;
   }
 
   get authorizationHeader(): string {

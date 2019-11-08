@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../services/auth.service';
-import { ComplaintsService } from '../services/complaints.service';
+import { AuthService } from '../auth/auth.service';
+import { ComplaintsService } from '../complaints/services/complaints.service';
+import { Complaint } from '../complaints/models/compaint';
 
 @Component({
   selector: 'app-home',
@@ -10,7 +11,7 @@ import { ComplaintsService } from '../services/complaints.service';
 export class HomeComponent implements OnInit {
   public Loading: boolean;
 
-  constructor(public authService: AuthService) { }
+  constructor(public authService: AuthService, private complaintsService: ComplaintsService) { }
 
   ngOnInit() {
   }
@@ -23,5 +24,4 @@ export class HomeComponent implements OnInit {
   Logout(){
     this.authService.logout();
   }
-
 }

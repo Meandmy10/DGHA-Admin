@@ -1,0 +1,7 @@
+<nav class="nav nav-pills">
+  <a routerLink="/users" class="nav-link" [ngClass]="{'active': pageName === 'User Manager'}">Manage Users</a>
+  <a routerLink="/complaints" class="nav-link" [ngClass]="{'active': pageName === 'Complaint Manager'}">Manage Complaints</a>
+  <a routerLink="/reviews" class="nav-link" [ngClass]="{'active': pageName === 'Review Manager'}">Manage Reviews</a>
+  <span style="flex-grow: 1;"></span>
+  <button (click)="Logout()" type="button" class="btn btn-secondary">Logout</button>
+</nav>

@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { AuthService } from './auth.service';
+import { AuthService } from '../../auth/auth.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Config } from '../config';
-import { ApiService } from './api.service';
-import { Complaint } from './compaint';
-import { catchError, retry } from 'rxjs/operators';
+import { Config } from '../../config';
+import { ApiService } from '../../shared/services/api.service';
+import { Complaint } from '../models/compaint';
+import { catchError, retry, timeout } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -28,8 +28,9 @@ export class ComplaintsService extends ApiService {
   public GetComplaints() {
     return this.http.get<Complaint[]>(this.uri + '/Complaints', this.GetHeaders())
       .pipe(
+        timeout(5000),
         retry(3),
-        // catchError(this.HandleError)
+        catchError(this.HandleError)
       );
   }
 
@@ -39,16 +40,18 @@ export class ComplaintsService extends ApiService {
 
     return this.http.get<Complaint>(this.uri + reqparams, this.GetHeaders())
       .pipe(
+        timeout(5000),
         retry(3),
-        // catchError(this.HandleError)
+        catchError(this.HandleError)
       );
   }
 
   public PostComplaint(complaint: Complaint) {
     return this.http.post<Complaint>(this.uri + '/Complaints', complaint ,this.GetHeaders())
       .pipe(
+        timeout(5000),
         retry(3),
-        // catchError(this.HandleError)
+        catchError(this.HandleError)
       );
   }
 
@@ -58,8 +61,9 @@ export class ComplaintsService extends ApiService {
 
     return this.http.put<Complaint>(this.uri + reqparams, complaint ,this.GetHeaders())
       .pipe(
+        timeout(5000),
         retry(3),
-        // catchError(this.HandleError)
+        catchError(this.HandleError)
       );
   }
 
@@ -69,8 +73,9 @@ export class ComplaintsService extends ApiService {
 
     return this.http.delete<Complaint>(this.uri + reqparams ,this.GetHeaders())
       .pipe(
+        timeout(5000),
         retry(3),
-        // catchError(this.HandleError)
+        catchError(this.HandleError)
       );
   }
 }
