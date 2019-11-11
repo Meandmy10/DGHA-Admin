@@ -8,10 +8,13 @@ import { Complaint } from '../models/compaint';
 })
 export class ComplaintComponent implements OnInit {
   @Input() complaint: Complaint;
+  @Input() status: string;
 
   constructor() { }
 
   ngOnInit() {
+    this.complaint = new Complaint(this.complaint);
+    this.complaint.status = this.status;
   }
 
 }

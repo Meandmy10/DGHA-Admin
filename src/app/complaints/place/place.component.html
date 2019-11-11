@@ -1,2 +1,7 @@
-<h1>{{place.placeId}}</h1>
-<app-complaint *ngFor="let complaint of place.complaints" [complaint]="complaint"></app-complaint>
+<h2 style="overflow-wrap: break-word;">{{place.key}}</h2>
+<div *ngFor="let status of place.value | keyvalue">
+  <h3>{{status.key}}</h3>
+  <div style="display: flex; width: 100%; flex-wrap: wrap;">
+    <app-complaint *ngFor="let complaint of status.value | keyvalue" [complaint]="complaint.value" [status]="status.key"></app-complaint>
+  </div>
+</div>

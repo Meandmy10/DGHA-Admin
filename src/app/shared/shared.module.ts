@@ -3,21 +3,24 @@ import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './header/header.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { RouterModule } from '@angular/router';
+import { EmailBreakPipe } from './pipes/email-break.pipe';
 
 
 
 @NgModule({
   declarations: [
     HeaderComponent,
-    NavigationComponent
+    NavigationComponent,
+    EmailBreakPipe,
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
   ],
   exports: [
     HeaderComponent,
-    NavigationComponent
+    NavigationComponent,
+    EmailBreakPipe,
   ]
 })
 export class SharedModule { }

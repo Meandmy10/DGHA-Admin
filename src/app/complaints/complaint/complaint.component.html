@@ -1,14 +1,17 @@
-<div class="card-footer">
-  <div class="col-lg-12 table-responsive">
-        <tr>
-          <td>{{complaint.userID}}</td>
-          <td>{{complaint.comment}}</td>
-          <td>{{complaint.timeSubmitted}}</td>
-          <td>{{complaint.timeLastUpdated}}</td>
-          <td>{{complaint.status}}</td>
-          <td>
-            <button type="button" class="btn btn-danger mr-1" (click)="deleteComplaint(complaint.Id)">Delete</button>
-          </td>
-        </tr>
+<div class="card m-2" style="width: 20rem;">
+  <!-- <div class="card-header">
+  </div> -->
+  <div class="card-body">
+    <h5 class="card-title" [innerHTML]="complaint.userEmail | emailBreak"></h5>
+    <h6 class="card-subtitle mb-2 text-muted">{{complaint.status}}</h6>
+    <p class="card-text">{{complaint.comment}}</p>
+    <button class="btn btn-primary">Update</button>
+    <button class="btn btn-danger ml-1">Delete</button>
+  </div>
+  <div class="card-footer text-muted">
+    Submitted: {{complaint.timeSubmitted.toLocaleString()}}
+  </div>
+  <div *ngIf="complaint.status != 'Newly Created'" class="card-footer text-muted">
+    Submitted: {{complaint.timeSubmitted.toLocaleString()}}
   </div>
 </div>
