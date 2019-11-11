@@ -1,9 +1,9 @@
 export class Complaint {
-    public UserID: string;
-    public PlaceID: string;
-    public TimeSubmitted: Date;
+    public userID: string;
+    public placeID: string;
+    public timeSubmitted: Date;
 
-    public Comment: string;
-    public TimeLastUpdated: Date;
-    public Status: string;
+    public comment: string;
+    public timeLastUpdated: Date;
+    public status: string;
 }
