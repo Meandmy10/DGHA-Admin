@@ -5,8 +5,8 @@ import { Config } from '../../config';
 import { ApiService } from '../../shared/services/api.service';
 import { Complaint } from '../models/compaint';
 import { catchError, retry, timeout } from 'rxjs/operators';
-import { ComplaintLocation } from '../models/complaint-location';
 import { BasicComplaint } from '../models/basic-complaint';
+import { ComplaintLocations } from '../models/complaint-locations';
 
 @Injectable({
   providedIn: 'root'
@@ -28,7 +28,7 @@ export class ComplaintsService extends ApiService {
   }
 
   public GetComplaints() {
-    return this.http.get<Record<string,Record<string, BasicComplaint[]>>>(this.uri + '/Complaints', this.GetHeaders())
+    return this.http.get<ComplaintLocations>(this.uri + '/Complaints', this.GetHeaders())
       .pipe(
         timeout(5000),
         retry(3),

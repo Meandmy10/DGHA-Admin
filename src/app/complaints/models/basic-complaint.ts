@@ -4,4 +4,5 @@ export class BasicComplaint {
 
     public comment: string;
     public timeLastUpdated: Date;
+    public status: string;
 }

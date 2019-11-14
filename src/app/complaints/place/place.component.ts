@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Place } from '../models/place';
 import { BasicComplaint } from '../models/basic-complaint';
+import { ComplaintLocations } from '../models/complaint-locations';
 
 @Component({
   selector: 'app-place',
@@ -8,7 +8,7 @@ import { BasicComplaint } from '../models/basic-complaint';
   styleUrls: ['./place.component.css']
 })
 export class PlaceComponent implements OnInit {
-  @Input() place: Record<string, BasicComplaint[]>;
+  @Input() place: ComplaintLocations;
 
   constructor() { }
 
