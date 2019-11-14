@@ -1,5 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Complaint } from '../models/compaint';
+import { BasicComplaint } from '../models/basic-complaint';
+import { ComplaintsService } from '../services/complaints.service';
+import { parseISO } from 'date-fns';
 
 @Component({
   selector: 'app-complaint',
@@ -8,11 +11,31 @@ import { Complaint } from '../models/compaint';
 })
 export class ComplaintComponent implements OnInit {
   @Input() complaint: Complaint;
+  @Output() deleted: EventEmitter<Complaint> = new EventEmitter();
+  timeAdded: Date;
+  lastUpdated: Date;
 
-  constructor() { }
+  constructor(public complaintsService: ComplaintsService) { }
 
   ngOnInit() {
-    this.complaint = new Complaint(this.complaint);
+    this.timeAdded = parseISO(this.complaint.timeSubmitted);
+    this.lastUpdated = parseISO(this.complaint.timeLastUpdated);
+    console.log(this.complaint);
+  }
+
+  onSubmit() {
+    this.complaintsService.PutComplaint(this.complaint.placeID, this.complaint.userID, this.complaint.timeSubmitted, this.complaint).subscribe(complaint => {
+      console.log("Complaint Updated", complaint);
+      this.complaint = complaint;
+      this.lastUpdated = parseISO(this.complaint.timeLastUpdated);
+    });
+  }
+
+  onClick(){
+    this.complaintsService.DeleteComplaint(this.complaint.placeID, this.complaint.userID, this.complaint.timeSubmitted).subscribe(complaint => {
+      console.log("Complaint Deleted", complaint);
+      this.deleted.emit(complaint);
+    })
   }
 
 }

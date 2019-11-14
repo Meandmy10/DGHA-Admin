@@ -45,9 +45,9 @@ export class ComplaintsService extends ApiService {
       );
   }
 
-  public GetComplaint(placeId: string, userId: string, timeSubmitted: Date) {
+  public GetComplaint(placeId: string, userId: string, timeSubmitted: string) {
 
-    const reqparams = `/Complaints/${placeId}/${userId}/${timeSubmitted.toISOString()}`;
+    const reqparams = `/Complaints/${placeId}/${userId}/${timeSubmitted}`;
 
     return this.http.get<Complaint>(this.uri + reqparams, this.GetHeaders())
       .pipe(
@@ -57,7 +57,7 @@ export class ComplaintsService extends ApiService {
       );
   }
 
-  public PostComplaint(complaint: Complaint) {
+  public PostComplaint(complaint: BasicComplaint) {
     return this.http.post<Complaint>(this.uri + '/Complaints', complaint ,this.GetHeaders())
       .pipe(
         timeout(5000),
@@ -66,11 +66,11 @@ export class ComplaintsService extends ApiService {
       );
   }
 
-  public PutComplaint(placeId: string, userId: string, timeSubmitted: Date, complaint: Complaint) {
+  public PutComplaint(placeId: string, userId: string, timeSubmitted: string, complaint: BasicComplaint) {
 
-    const reqparams = `/Complaints/${placeId}/${userId}/${timeSubmitted.toISOString()}`;
+    const reqparams = `/Complaints/${placeId}/${userId}/${timeSubmitted}`;
 
-    return this.http.put<Complaint>(this.uri + reqparams, complaint ,this.GetHeaders())
+    return this.http.put<Complaint>(this.uri + reqparams, complaint, this.GetHeaders())
       .pipe(
         timeout(5000),
         retry(3),
@@ -78,11 +78,11 @@ export class ComplaintsService extends ApiService {
       );
   }
 
-  public DeleteComplaint(placeId: string, userId: string, timeSubmitted: Date) {
+  public DeleteComplaint(placeId: string, userId: string, timeSubmitted: string) {
 
-    const reqparams = `/Complaints/${placeId}/${userId}/${timeSubmitted.toISOString()}`;
+    const reqparams = `/Complaints/${placeId}/${userId}/${timeSubmitted}`;
 
-    return this.http.delete<Complaint>(this.uri + reqparams ,this.GetHeaders())
+    return this.http.delete<Complaint>(this.uri + reqparams, this.GetHeaders())
       .pipe(
         timeout(5000),
         retry(3),

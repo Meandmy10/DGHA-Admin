@@ -1,7 +1,5 @@
-<h2 style="overflow-wrap: break-word;">{{place.placeId}}</h2>
-<!-- <div *ngFor="let status of place.value | keyvalue"> -->
-  <!-- <h3>{{status.key}}</h3> -->
-  <div style="display: flex; width: 100%; flex-wrap: wrap;">
-    <app-complaint *ngFor="let complaint of place.complaints" [complaint]="complaint"></app-complaint>
-  </div>
-<!-- </div> -->
+<h2>{{place.name}}</h2>
+<h4>{{place.address}}</h4>
+<div style="display: flex; width: 100%; flex-wrap: wrap;">
+  <app-complaint *ngFor="let complaint of place.complaints" [complaint]="complaint" (deleted)="onDeleted($event)"></app-complaint>
+</div>

@@ -1,0 +1,17 @@
+@media screen and (max-width: 480px) {
+    .card {
+        width: 92vw;
+        margin-bottom: 1vh;
+    }
+}
+
+@media screen and (min-width: 480px) {
+    .card {
+        width: 21rem;
+        margin: 0.5rem;
+    }
+}
+
+textarea{
+    width: 100%;
+}

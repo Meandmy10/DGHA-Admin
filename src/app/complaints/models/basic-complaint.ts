@@ -1,8 +1,12 @@
+import { parseISO } from 'date-fns';
+import { Complaint } from './compaint';
+
 export class BasicComplaint {
+    public placeID: string;
     public userID: string;
-    public timeSubmitted: Date;
+    public timeSubmitted: string;
 
     public comment: string;
-    public timeLastUpdated: Date;
+    public timeLastUpdated: string;
     public status: string;
 }
