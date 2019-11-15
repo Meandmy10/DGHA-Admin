@@ -1,0 +1,21 @@
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title" [innerHTML]="complaint.userEmail | emailBreak"></h5>
+    <form #complaintForm="ngForm" (ngSubmit)="onSubmit()">
+      <select class="form-control" [(ngModel)]="complaint.status" name="Status">
+        <option value="Pending">Pending</option>
+        <option value="Resolved">Resolved</option>
+        <option value="Newly Created">Newly Created</option>
+      </select>
+      <textarea class="form-control mt-2 mb-2" [(ngModel)]="complaint.comment" rows="3" name="Comment"></textarea>
+      <button type="submit" class="btn btn-primary">Update</button>
+      <button type="button" class="btn btn-danger ml-2" (click)="onClick()">Delete</button>
+    </form>
+  </div>
+  <div class="card-footer text-muted">
+    Submitted: {{timeAdded.toLocaleString()}}
+  </div>
+  <div *ngIf="complaint.status != 'Newly Created'" class="card-footer text-muted">
+    Updated: {{lastUpdated.toLocaleString()}}
+  </div>
+</div>

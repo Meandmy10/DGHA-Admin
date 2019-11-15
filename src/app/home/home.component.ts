@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../services/auth.service';
-import { ComplaintsService } from '../services/complaints.service';
+import { AuthService } from '../auth/auth.service';
+import { ComplaintsService } from '../complaints/services/complaints.service';
 
 @Component({
   selector: 'app-home',
@@ -20,14 +20,7 @@ export class HomeComponent implements OnInit {
     this.authService.login();
   }
 
-  request(){
-    this.complaintsService.GetComplaints().subscribe(complaints => {
-      console.log(complaints);
-    })
-  }
-
   Logout(){
     this.authService.logout();
   }
-
 }
