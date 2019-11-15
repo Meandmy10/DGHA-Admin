@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Complaint } from '../models/compaint';
-import { BasicComplaint } from '../models/basic-complaint';
 import { ComplaintsService } from '../services/complaints.service';
 import { parseISO } from 'date-fns';
 

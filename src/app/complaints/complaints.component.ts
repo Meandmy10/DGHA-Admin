@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { Complaint } from './models/compaint';
-import { Observable } from 'rxjs';
-import { BasicComplaint } from './models/basic-complaint';
+import { ActivatedRoute } from '@angular/router';
 import { ComplaintLocations } from './models/complaint-locations';
 
 @Component({

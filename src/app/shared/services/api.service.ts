@@ -1,6 +1,5 @@
 import { throwError } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
 
 @Injectable({
   providedIn: 'root'
@@ -26,21 +25,21 @@ export abstract class ApiService {
       case(400):
         console.error("400 Bad Request: ", error.error);
         return throwError(error);
-      break;
-      default:
+      case(401):
+        console.error("401 Unauthorized: ", error.error);
         return throwError(error);
-      break;
-      
+      case(403):
+        console.error("403 Forbidden: ", error.error);
+        return throwError(error);
+      case(404):
+        console.error("404 Not Found: ", error.error);
+        return throwError(error);
+      case(409):
+        console.error("409 Conflict: ", error.error);
+        return throwError(error);
+      default:
+        console.error(error.status + " Server Error: ", error.error);
+        return throwError(error);
     }
-    
-    // var modelStateErrors: string = '';
-
-    // // for now just concatenate the error descriptions, alternative we could simply pass the entire error response upstream
-    // for (var key in error.error) {
-    //   if (error.error[key]) modelStateErrors += error.error[key].description + '\n'; 
-    // }
-      
-    // modelStateErrors = modelStateErrors = '' ? null : modelStateErrors;
-    // return throwError(modelStateErrors || 'Server error');
   }
 }

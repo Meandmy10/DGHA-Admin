@@ -1,6 +1,3 @@
-import { parseISO } from 'date-fns';
-import { Complaint } from './compaint';
-
 export class BasicComplaint {
     public placeID: string;
     public userID: string;

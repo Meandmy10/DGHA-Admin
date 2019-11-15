@@ -1,4 +1,3 @@
-import { environment } from 'src/environments/environment.prod';
 import { isDevMode } from '@angular/core';
 
 export class Config {
@@ -10,7 +9,6 @@ export class Config {
     else{
       return "https://dgha-identityserver.azurewebsites.net";
     }
-    return "https://dgha-identityserver.azurewebsites.net";
   }
   
   static GetResource(): string{
@@ -20,6 +18,5 @@ export class Config {
     else{
       return "https://dgha-api.azurewebsites.net";
     }
-    return "https://dgha-api.azurewebsites.net";
   }
 }

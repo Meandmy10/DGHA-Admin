@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
-import { environment } from 'src/environments/environment.prod';
 import { UserManager, UserManagerSettings, User } from 'oidc-client';
-import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Subject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { isDevMode } from '@angular/core';
 import { Router } from '@angular/router';
 
