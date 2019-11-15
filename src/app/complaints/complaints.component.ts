@@ -9,15 +9,26 @@ import { ComplaintLocations } from './models/complaint-locations';
 })
 export class ComplaintsComponent implements OnInit {
   public places: ComplaintLocations;
+  public Loading: boolean;
 
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.route.data
-        .subscribe((data: { response: ComplaintLocations }) => {
-          if(data.response == null) return;
-          this.places = data.response;
-        });
+    this.Loading = true;
+
+    // Wait for getComplaints to complete before hiding spinner
+    this.getComplaints().then(() => {
+      this.Loading = false;
+    });
   }
 
+  getComplaints() {
+    return new Promise(resolve => {
+      resolve(this.route.data
+        .subscribe((data: { response: ComplaintLocations }) => {
+          if (data.response == null) return;
+          this.places = data.response;
+        }));
+    });
+  }
 }

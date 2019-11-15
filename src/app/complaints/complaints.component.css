@@ -4,3 +4,14 @@ main {
     margin-top: 2vh;
     margin-bottom: 2vh;
 }
+
+.spinner-border {
+    position: fixed;
+    z-index: 999;
+    height: 2em;
+    width: 2em;
+    overflow: show;
+    margin: auto;
+    left: 0;
+    right: 0;
+  }
