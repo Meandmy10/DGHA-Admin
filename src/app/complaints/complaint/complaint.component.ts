@@ -13,6 +13,7 @@ export class ComplaintComponent implements OnInit {
   @Output() deleted: EventEmitter<Complaint> = new EventEmitter();
   timeAdded: Date;
   lastUpdated: Date;
+  public Loading: boolean;
 
   constructor(public complaintsService: ComplaintsService) { }
 
@@ -23,18 +24,29 @@ export class ComplaintComponent implements OnInit {
   }
 
   onSubmit() {
-    this.complaintsService.PutComplaint(this.complaint.placeID, this.complaint.userID, this.complaint.timeSubmitted, this.complaint).subscribe(complaint => {
-      console.log("Complaint Updated", complaint);
-      this.complaint = complaint;
-      this.lastUpdated = parseISO(this.complaint.timeLastUpdated);
+    this.Loading = true;
+    new Promise(resolve => {
+      resolve(this.complaintsService.PutComplaint(this.complaint.placeID, this.complaint.userID, this.complaint.timeSubmitted, this.complaint).subscribe(complaint => {
+        console.log("Complaint Updated", complaint);
+        this.complaint = complaint;
+        this.lastUpdated = parseISO(this.complaint.timeLastUpdated);
+      }));
+    }).then(() => {
+      this.Loading = false;
     });
   }
 
-  onClick(){
-    this.complaintsService.DeleteComplaint(this.complaint.placeID, this.complaint.userID, this.complaint.timeSubmitted).subscribe(complaint => {
-      console.log("Complaint Deleted", complaint);
-      this.deleted.emit(complaint);
-    })
+  onClick() {
+    this.Loading = true;
+    new Promise(resolve => {
+      resolve(this.complaintsService.DeleteComplaint(this.complaint.placeID, this.complaint.userID, this.complaint.timeSubmitted).subscribe(complaint => {
+        console.log("Complaint Deleted", complaint);
+        this.deleted.emit(complaint);
+      }));
+    }).then(() => {
+      this.Loading = false;
+    });
+
   }
 
 }
