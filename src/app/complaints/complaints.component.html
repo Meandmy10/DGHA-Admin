@@ -1,8 +1,16 @@
 <app-header pageName="Complaint Manager"></app-header>
 <main>
-  <!-- Page is Loading -->
-  <div *ngIf="Loading" class="spinner-border" role="status">
-    <span class="sr-only">Loading...</span>
+  <app-place *ngFor="let place of places" [place]="place" (deleted)="onLocationDeleted($event)"></app-place>
+  <h4 *ngIf="1 > places.length">It looks like there are no unresolved complaints at the moment!</h4>
+
+  <div class="d-flex justify-content-center">
+    <button *ngIf="!loading" class="btn btn-primary" (click)="onClick()">{{getButtonText()}} Resolved Complaints</button>
+    <div *ngIf="loading" class="spinner-border" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
   </div>
-  <app-place *ngFor="let place of places" [place]="place"></app-place>
+  <div *ngIf="resolvedComplaints.length > 1" style="display: flex; width: 100%; flex-wrap: wrap;">
+    <h2 style="width: 100%;">Resolved Complaints:</h2>
+    <app-complaint *ngFor="let complaint of resolvedComplaints" [complaint]="complaint" (deleted)="onComplaintDelete($event)"></app-complaint>
+  </div>
 </main>

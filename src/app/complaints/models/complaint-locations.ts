@@ -1,6 +1,6 @@
 import { BasicComplaint } from './basic-complaint';
 
-export class ComplaintLocations {
+export class ComplaintsLocation {
     public placeId: string;
     public name: string;
     public address: string;

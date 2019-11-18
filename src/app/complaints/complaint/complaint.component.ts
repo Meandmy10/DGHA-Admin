@@ -20,33 +20,34 @@ export class ComplaintComponent implements OnInit {
   ngOnInit() {
     this.timeAdded = parseISO(this.complaint.timeSubmitted);
     this.lastUpdated = parseISO(this.complaint.timeLastUpdated);
-    console.log(this.complaint);
   }
 
   onSubmit() {
     this.Loading = true;
-    new Promise(resolve => {
-      resolve(this.complaintsService.PutComplaint(this.complaint.placeID, this.complaint.userID, this.complaint.timeSubmitted, this.complaint).subscribe(complaint => {
-        console.log("Complaint Updated", complaint);
-        this.complaint = complaint;
-        this.lastUpdated = parseISO(this.complaint.timeLastUpdated);
-      }));
-    }).then(() => {
-      this.Loading = false;
+    if(this.complaint.status == "Newly Created"){
+      this.complaint.status = "Pending";
+    }
+    this.complaintsService.PutComplaint(this.complaint.placeID, this.complaint.userID, this.complaint.timeSubmitted, this.complaint).subscribe(complaint => {
+      console.log("Complaint Updated", complaint);
+      this.complaint.status = complaint.status;
+      this.complaint.comment = complaint.comment;
+      this.complaint.timeLastUpdated = complaint.timeLastUpdated;
+      this.lastUpdated = parseISO(this.complaint.timeLastUpdated);
+      
+      if(complaint.status == "Resolved"){
+        this.deleted.emit(this.complaint);
+      }
+      else{
+        this.Loading = false;
+      }
     });
   }
 
   onClick() {
     this.Loading = true;
-    new Promise(resolve => {
-      resolve(this.complaintsService.DeleteComplaint(this.complaint.placeID, this.complaint.userID, this.complaint.timeSubmitted).subscribe(complaint => {
-        console.log("Complaint Deleted", complaint);
-        this.deleted.emit(complaint);
-      }));
-    }).then(() => {
-      this.Loading = false;
+    this.complaintsService.DeleteComplaint(this.complaint.placeID, this.complaint.userID, this.complaint.timeSubmitted).subscribe(complaint => {
+      console.log("Complaint Deleted", complaint);
+      this.deleted.emit(this.complaint);
     });
-
   }
-
 }
