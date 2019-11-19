@@ -28,7 +28,7 @@ export class ComplaintsService extends ApiService {
   }
 
   public GetComplaints() {
-    return this.http.get<ComplaintsLocation>(this.uri + '/Complaints', this.GetHeaders())
+    return this.http.get<ComplaintsLocation[]>(this.uri + '/Complaints', this.GetHeaders())
       .pipe(
         timeout(5000),
         retry(3),

@@ -9,11 +9,11 @@ import { ComplaintsLocation } from '../models/complaint-locations';
 @Injectable({
   providedIn: 'root'
 })
-export class ComplaintsResolverService implements Resolve<ComplaintsLocation> {
+export class ComplaintsResolverService implements Resolve<ComplaintsLocation[]> {
 
   constructor(private complaintsService: ComplaintsService, private router: Router) { } 
   
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<ComplaintsLocation> | Observable<never> {
+  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<ComplaintsLocation[]> | Observable<never> {
     return this.complaintsService.GetComplaints().pipe(
       map(complaints => {
         return complaints;
