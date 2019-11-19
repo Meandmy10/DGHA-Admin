@@ -1,7 +1,7 @@
-import { ComplaintLocations } from './complaint-locations';
+import { ComplaintsLocation } from './complaint-locations';
 
 describe('ComplaintLocations', () => {
   it('should create an instance', () => {
-    expect(new ComplaintLocations()).toBeTruthy();
+    expect(new ComplaintsLocation()).toBeTruthy();
   });
 });

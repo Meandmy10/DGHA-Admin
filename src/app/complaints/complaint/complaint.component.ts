@@ -13,28 +13,41 @@ export class ComplaintComponent implements OnInit {
   @Output() deleted: EventEmitter<Complaint> = new EventEmitter();
   timeAdded: Date;
   lastUpdated: Date;
+  public Loading: boolean;
 
   constructor(public complaintsService: ComplaintsService) { }
 
   ngOnInit() {
     this.timeAdded = parseISO(this.complaint.timeSubmitted);
     this.lastUpdated = parseISO(this.complaint.timeLastUpdated);
-    console.log(this.complaint);
   }
 
   onSubmit() {
+    this.Loading = true;
+    if(this.complaint.status == "Newly Created"){
+      this.complaint.status = "Pending";
+    }
     this.complaintsService.PutComplaint(this.complaint.placeID, this.complaint.userID, this.complaint.timeSubmitted, this.complaint).subscribe(complaint => {
       console.log("Complaint Updated", complaint);
-      this.complaint = complaint;
+      this.complaint.status = complaint.status;
+      this.complaint.comment = complaint.comment;
+      this.complaint.timeLastUpdated = complaint.timeLastUpdated;
       this.lastUpdated = parseISO(this.complaint.timeLastUpdated);
+      
+      if(complaint.status == "Resolved"){
+        this.deleted.emit(this.complaint);
+      }
+      else{
+        this.Loading = false;
+      }
     });
   }
 
-  onClick(){
+  onClick() {
+    this.Loading = true;
     this.complaintsService.DeleteComplaint(this.complaint.placeID, this.complaint.userID, this.complaint.timeSubmitted).subscribe(complaint => {
       console.log("Complaint Deleted", complaint);
-      this.deleted.emit(complaint);
-    })
+      this.deleted.emit(this.complaint);
+    });
   }
-
 }
