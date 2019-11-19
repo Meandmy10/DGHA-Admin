@@ -9,7 +9,7 @@
       <span class="sr-only">Loading...</span>
     </div>
   </div>
-  <div *ngIf="resolvedComplaints.length > 1" style="display: flex; width: 100%; flex-wrap: wrap;">
+  <div *ngIf="resolvedComplaints.length > 0" style="display: flex; width: 100%; flex-wrap: wrap;">
     <h2 style="width: 100%;">Resolved Complaints:</h2>
     <app-complaint *ngFor="let complaint of resolvedComplaints" [complaint]="complaint" (deleted)="onComplaintDelete($event)"></app-complaint>
   </div>

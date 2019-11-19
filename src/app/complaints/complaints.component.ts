@@ -24,9 +24,9 @@ export class ComplaintsComponent implements OnInit {
   }
 
   onLocationDeleted(place: ComplaintsLocation) {
-    const deletedComplaint = this.places.find(c => c.placeId == place.placeId);
-    console.log(deletedComplaint);
-    this.places.splice(this.places.indexOf(deletedComplaint),1);
+    const deletedPlace = this.places.find(c => c.placeId == place.placeId);
+    console.log(deletedPlace);
+    this.places.splice(this.places.indexOf(deletedPlace),1);
   }
   
   onClick(){
@@ -50,6 +50,6 @@ export class ComplaintsComponent implements OnInit {
   onComplaintDelete(complaint: Complaint){
     const deletedComplaint = this.resolvedComplaints.find(c => c.placeID == complaint.placeID && c.userID == complaint.userID && c.timeSubmitted == complaint.timeSubmitted);
     console.log(deletedComplaint);
-    this.places.splice(this.resolvedComplaints.indexOf(deletedComplaint),1);
+    this.resolvedComplaints.splice(this.resolvedComplaints.indexOf(deletedComplaint),1);
   }
 }
