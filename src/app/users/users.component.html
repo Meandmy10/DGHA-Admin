@@ -1,0 +1,10 @@
+<app-header pageName="User Manager"></app-header>
+<main>
+  <form (submit)="onSubmit()" class="form-group" style="max-width: 20em;">
+    <label for="email">User Email Address</label>
+    <input type="text" [ngModel]="email" class="form-control" name="email" /> 
+    <br />
+    <button type="submit" class="btn btn-primary">Get User Information</button>
+  </form>
+  <app-user></app-user>
+</main>
