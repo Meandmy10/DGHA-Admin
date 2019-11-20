@@ -21,6 +21,7 @@
   <div class="card-footer text-muted">
     Submitted: {{timeAdded.toLocaleString()}}
   </div>
+  <!-- If complaint is not newly created -->
   <div *ngIf="complaint.status != 'Newly Created'" class="card-footer text-muted">
     Updated: {{lastUpdated.toLocaleString()}}
   </div>

@@ -1,8 +1,8 @@
 export class User {
-    public Id: string;
+    public id: string;
     // public UserName: string; //currently is the same as email so no point adding it.
-    public Email: string;
-    public Roles: string[];
+    public email: string;
+    public roles: string[];
 
     //these values could be added later:
     // EmailConfirmed

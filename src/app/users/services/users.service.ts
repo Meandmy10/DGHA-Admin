@@ -20,8 +20,8 @@ export class UsersService extends ApiService {
    private GetHeaders(){
     return {
       headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Authorization': this.authService.authorizationHeader
+        'Authorization': this.authService.authorizationHeader,
+        'Content-Type': 'application/json'
       })
     };
   }
@@ -36,7 +36,7 @@ export class UsersService extends ApiService {
   }
 
   public AddRole(userId: string, role: string) {
-    return this.http.post<User>(this.uri + `/Accounts/${userId}/${role}`, this.GetHeaders())
+    return this.http.post(this.uri + `/Accounts/${userId}/${role}`, this.GetHeaders())
       .pipe(
         timeout(5000),
         retry(3),
@@ -45,7 +45,7 @@ export class UsersService extends ApiService {
   }
 
   public RemoveRole(userId: string, role: string) {
-    return this.http.delete<User>(this.uri + `/Accounts/${userId}/${role}`, this.GetHeaders())
+    return this.http.delete(this.uri + `/Accounts/${userId}/${role}`, this.GetHeaders())
       .pipe(
         timeout(5000),
         retry(3),
