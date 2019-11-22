@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { UserManager, UserManagerSettings, User } from 'oidc-client';
-import { BehaviorSubject } from 'rxjs';
 import { isDevMode } from '@angular/core';
 import { Router } from '@angular/router';
+
+import { UserManager, UserManagerSettings, User } from 'oidc-client';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -21,17 +22,16 @@ export class AuthService {
       this.User = user;
       this._authStatus.next(this.isAuthenticated());
     });
-   }
-   
+  }
 
   login() {
     return this.Manager.signinRedirect();
   }
 
   async completeAuthentication() {
-      this.User = await this.Manager.signinRedirectCallback();
-      this._authStatus.next(this.isAuthenticated());
-      this.router.navigate(['/home']);
+    this.User = await this.Manager.signinRedirectCallback();
+    this._authStatus.next(this.isAuthenticated());
+    this.router.navigate(['/home']);
   }
 
   isAuthenticated(): boolean {

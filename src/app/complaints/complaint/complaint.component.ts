@@ -41,6 +41,7 @@ export class ComplaintComponent implements OnInit {
       }
       else{
         this.Loading = false;
+        this.edited = false;
       }
     });
   }
