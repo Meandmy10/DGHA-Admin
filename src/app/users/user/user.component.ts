@@ -13,6 +13,7 @@ import { throwError } from 'rxjs';
 export class UserComponent implements OnInit {
   @Input() user: User;
   error: string = '';
+  loading: boolean = false;
 
   constructor(private usersService: UsersService) { }
 
@@ -20,28 +21,34 @@ export class UserComponent implements OnInit {
   }
 
   public onPromote(){
+    this.loading = true;
     this.error = "";
     this.usersService.AddRole(this.user.id, "Administrator").pipe(
       catchError(error => {
+        this.loading = false;
         console.log(error);
         this.error = "Error, Please Try Again Later.";
         return throwError(error);
       })
     ).subscribe(() => {
-      this.user.roles = ["Adminstrator"];
+      this.loading = false;
+      this.user.roles.push("Administrator");
       console.log("Added Admin Role");
     });
   }
 
   public onDemote(){
+    this.loading = true;
     this.error = "";
     this.usersService.RemoveRole(this.user.id, "Administrator").pipe(
       catchError(error => {
+        this.loading = false;
         console.log(error);
         this.error = "Error, Please Try Again Later.";
         return throwError(error);
       })
     ).subscribe(() => {
+      this.loading = false;
       this.user.roles = [];
       console.log("Removed Admin Role");
     });

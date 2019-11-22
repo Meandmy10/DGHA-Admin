@@ -13,6 +13,7 @@ export class UsersComponent implements OnInit {
   public email: string;
   public user: User;
   public error: string = "";
+  loading: boolean = false;
 
   constructor(private usersService: UsersService) { }
 
@@ -20,9 +21,12 @@ export class UsersComponent implements OnInit {
   }
 
   onSubmit(){
+    this.loading = true;
+    this.user = null;
     this.error = "";
     this.usersService.GetUserbyEmail(this.email).pipe(
       catchError((error) => {
+        this.loading = false;
         switch(error.status){
           case(404):
             this.error = "Can't find user, Check email and try again.";
@@ -33,6 +37,7 @@ export class UsersComponent implements OnInit {
         }
       })
     ).subscribe( (user: User) => {
+      this.loading = false;
       this.user = user;
     })
   }
