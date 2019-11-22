@@ -14,6 +14,8 @@ export class ComplaintComponent implements OnInit {
   timeAdded: Date;
   lastUpdated: Date;
   public Loading: boolean;
+  edited: boolean;
+
 
   constructor(public complaintsService: ComplaintsService) { }
 
@@ -49,5 +51,9 @@ export class ComplaintComponent implements OnInit {
       console.log("Complaint Deleted", complaint);
       this.deleted.emit(this.complaint);
     });
+  }
+
+  public onChange(){
+    this.edited = true;
   }
 }
