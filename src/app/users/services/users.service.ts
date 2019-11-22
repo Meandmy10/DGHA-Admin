@@ -36,7 +36,7 @@ export class UsersService extends ApiService {
   }
 
   public AddRole(userId: string, role: string) {
-    return this.http.post(this.uri + `/Accounts/${userId}/${role}`, this.GetHeaders())
+    return this.http.post(this.uri + `/Accounts/${userId}/${role}`, null, this.GetHeaders())
       .pipe(
         timeout(5000),
         retry(3),
