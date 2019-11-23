@@ -15,7 +15,7 @@
       </select>
       <textarea (ngModelChange)="onChange()" class="form-control mt-2 mb-2" [(ngModel)]="complaint.comment" rows="3" name="Comment"></textarea>
       <div style="display: flex;">
-        <button *ngIf="edited" type="submit" class="btn btn-primary">Update</button>
+        <button [disabled]="!edited" type="submit" class="btn btn-primary">Update</button>
         <span style="flex-grow: 1;"></span>
         <button type="button" class="btn btn-danger" (click)="onClick()">Delete</button>
       </div>
