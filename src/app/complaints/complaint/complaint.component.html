@@ -7,18 +7,23 @@
   </div>
   <div class="card-body">
     <h5 class="card-title" [innerHTML]="complaint.userEmail | emailBreak"></h5>
-    <form #complaintForm="ngForm" (ngSubmit)="onSubmit()">
-      <select (change)="onChange()" class="form-control" [(ngModel)]="complaint.status" name="Status">
+    <form #complaintForm="ngForm" (ngSubmit)="onSubmit()" style="display: flex; flex-flow: wrap;">
+      <label for="status" class="mt-1">Status: </label>
+      <select (change)="onChange()" class="form-control ml-3" style="width: auto;" [(ngModel)]="complaint.status" name="Status" id="status">
         <option value="Pending">Pending</option>
         <option value="Resolved">Resolved</option>
         <option value="Newly Created" disabled>Newly Created</option>
       </select>
-      <textarea (ngModelChange)="onChange()" class="form-control mt-2 mb-2" [(ngModel)]="complaint.comment" rows="3" name="Comment"></textarea>
-      <div style="display: flex;">
-        <button [disabled]="!edited" type="submit" class="btn btn-primary">Update</button>
+      
+      <span style="flex-grow: 1; flex-basis: 100%;"></span>
+
+      <label for="comment" class="mt-2">Details: </label>
+      <textarea (ngModelChange)="onChange()" class="form-control mb-3" [(ngModel)]="complaint.comment" rows="3" name="Comment" id="comment"></textarea>
+      <!-- <div style="display: flex;"> -->
+        <button [disabled]="edited" type="submit" class="btn btn-outline-primary">Update</button>
         <span style="flex-grow: 1;"></span>
-        <button type="button" class="btn btn-danger" (click)="onClick()">Delete</button>
-      </div>
+        <button type="button" class="btn btn-outline-danger" (click)="onClick()">Delete</button>
+      <!-- </div> -->
     </form>
   </div>
   <div class="card-footer text-muted">

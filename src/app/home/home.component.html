@@ -4,7 +4,7 @@
   <div *ngIf="!Loading">
     <h1>Welcome to DGHA-Admin!</h1>
     <p>Press Login below to begin</p>
-    <button (click)="login()" type="button" class="btn btn-primary">Login</button>
+    <button (click)="login()" type="button" class="btn btn-outline-primary">Login</button>
   </div>
   <!-- Page is Loading -->
   <div *ngIf="Loading" class="spinner-border" role="status">
@@ -23,6 +23,6 @@
   <div *ngIf="!authService.isAdmin()" class="alert alert-warning" role="alert">
     <p>It appears that your not an administrator {{authService.email}}.<br />
       Ask another administrator if you think this is a mistake.</p>
-    <button (click)="Logout()" type="button" class="btn btn-primary"a>Logout</button>
+    <button (click)="Logout()" type="button" class="btn btn-outline-primary"a>Logout</button>
   </div>
 </main>
