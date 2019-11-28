@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Event, Router, NavigationStart, NavigationEnd, NavigationCancel, NavigationError } from '@angular/router';
 import { AuthService } from './auth/auth.service';
-import { skip } from 'rxjs/operators';
+import { skip, filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -29,6 +29,13 @@ export class AppComponent implements OnInit {
         default: {
           break;
         }
+      }
+    });
+
+    this.router.events.pipe(filter(e => e instanceof NavigationEnd)).subscribe(() => {
+      const focusElement = document.querySelector('#focusElement') as HTMLElement
+      if (focusElement) {
+        focusElement.focus();
       }
     });
   }

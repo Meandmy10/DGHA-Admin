@@ -22,6 +22,12 @@ export class UsersComponent implements OnInit {
 
   onSubmit(){
     this.loading = true;
+    //focus on loading element
+    const focusElement = document.querySelector('#loading') as HTMLElement
+    if (focusElement) {
+      focusElement.focus();
+    }
+
     this.user = null;
     this.error = "";
     this.usersService.GetUserbyEmail(this.email).pipe(
@@ -30,15 +36,29 @@ export class UsersComponent implements OnInit {
         switch(error.status){
           case(404):
             this.error = "Can't find user, Check email and try again.";
-            return throwError(error);
+            break;
           default:
             this.error = "Unknown Error, Please try again.";
-            return throwError(error);
+            break;
         }
+        
+        //focus on error message
+        const focusElement = document.querySelector('#error') as HTMLElement
+        if (focusElement) {
+          focusElement.focus();
+        }
+
+        return throwError(error);
       })
     ).subscribe( (user: User) => {
       this.loading = false;
       this.user = user;
+      
+      //focus on loaded user title
+      const focusElement = document.querySelector('#userTitle') as HTMLElement
+      if (focusElement) {
+        focusElement.focus();
+      }
     })
   }
 }

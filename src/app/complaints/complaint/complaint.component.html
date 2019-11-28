@@ -2,11 +2,11 @@
   <!-- Page is Loading -->
   <div *ngIf="Loading" class="black-background">
     <div class="spinner-border" role="status">
-      <span class="sr-only">Loading...</span>
+      <span id="loading.{{complaint.placeID}}.{{complaint.userID}}" class="sr-only">Loading...</span>
     </div>
   </div>
   <div class="card-body">
-    <h5 class="card-title" [innerHTML]="complaint.userEmail | emailBreak"></h5>
+    <h5 id="title.{{complaint.placeID}}.{{complaint.userID}}" class="card-title" [innerHTML]="complaint.userEmail | emailBreak"></h5>
     <form #complaintForm="ngForm" (ngSubmit)="onSubmit()" style="display: flex; flex-flow: wrap;">
       <label for="status.{{complaint.placeID}}.{{complaint.userID}}" class="mt-1">Status: </label>
       <select (change)="onChange()" class="form-control ml-3" style="width: auto;" [(ngModel)]="complaint.status" name="Status" id="status.{{complaint.placeID}}.{{complaint.userID}}">

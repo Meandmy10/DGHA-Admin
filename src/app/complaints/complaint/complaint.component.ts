@@ -26,6 +26,13 @@ export class ComplaintComponent implements OnInit {
 
   onSubmit() {
     this.Loading = true;
+    
+    //focus on loading element
+    const focusElement = document.querySelector(`#loading.${this.complaint.placeID}.${this.complaint.userID}`) as HTMLElement
+    if (focusElement) {
+      focusElement.focus();
+    }
+
     if(this.complaint.status == "Newly Created"){
       this.complaint.status = "Pending";
     }
@@ -48,6 +55,13 @@ export class ComplaintComponent implements OnInit {
 
   onClick() {
     this.Loading = true;
+    
+    //focus on loading element
+    const focusElement = document.querySelector(`#loading.${this.complaint.placeID}.${this.complaint.userID}`) as HTMLElement
+    if (focusElement) {
+      focusElement.focus();
+    }
+
     this.complaintsService.DeleteComplaint(this.complaint.placeID, this.complaint.userID, this.complaint.timeSubmitted).subscribe(complaint => {
       console.log("Complaint Deleted", complaint);
       this.deleted.emit(this.complaint);
