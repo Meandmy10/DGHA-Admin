@@ -9,10 +9,11 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  // Observable navItem source
   private _authStatus = new BehaviorSubject<boolean>(false);
-  // Observable navItem stream
+  private _loggingOut = new BehaviorSubject<boolean>(false);
+  
   authStatus$ = this._authStatus.asObservable();
+  loggingOut$ = this._loggingOut.asObservable();
   
   private Manager = new UserManager(this.getClientSettings());
   private User: User | null;
@@ -52,6 +53,7 @@ export class AuthService {
   }
 
   logout() {
+    this._loggingOut.next(true);
     this.Manager.signoutRedirect();
   }
 

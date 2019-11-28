@@ -15,13 +15,7 @@ export class NavigationComponent implements OnInit {
   ngOnInit() {
   }
 
-  isActive(nameCheck: string): boolean {
-    console.log("check");
-    return this.pageName === nameCheck;
-  }
-
   Logout(){
     this.authService.logout();
-    this.router.navigate(["/home"]);
   }
 }
