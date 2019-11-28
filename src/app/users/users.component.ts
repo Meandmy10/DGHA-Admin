@@ -43,7 +43,7 @@ export class UsersComponent implements OnInit {
             break;
         }
         
-        //focus on error message
+        // focus on error message
         const focusElement = document.querySelector('#error') as HTMLElement
         if (focusElement) {
           focusElement.tabIndex = -1;

@@ -6,7 +6,7 @@
   <div class="d-flex justify-content-center">
     <button *ngIf="!loading" class="btn btn-primary" (click)="onClick()">{{getButtonText()}} Resolved Complaints</button>
     <div *ngIf="loading" class="spinner-border" role="status">
-      <span #RCLoader class="sr-only">Loading...</span>
+      <span id="RCLoader" class="sr-only">Loading...</span>
     </div>
   </div>
   <div *ngIf="resolvedComplaints.length > 0" style="display: flex; width: 100%; flex-wrap: wrap;">

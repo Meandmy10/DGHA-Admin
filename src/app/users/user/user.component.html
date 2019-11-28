@@ -1,7 +1,7 @@
-<h2 #userTitle>{{user.email}}</h2>
-<button #UButton *ngIf="user.roles[0] != 'Administrator' && !loading" class="btn btn-primary" (click)="onPromote()">Promote to Administrator</button>
-<button #UButton *ngIf="user.roles[0] == 'Administrator' && !loading" class="btn btn-danger" (click)="onDemote()">Demote Administrator</button>
+<h2 id="userTitle">{{user.email}}</h2>
+<button id="UButton" *ngIf="user.roles[0] != 'Administrator' && !loading" class="btn btn-primary" (click)="onPromote()">Promote to Administrator</button>
+<button id="UButton" *ngIf="user.roles[0] == 'Administrator' && !loading" class="btn btn-danger" (click)="onDemote()">Demote Administrator</button>
 <div *ngIf="loading" class="spinner-border" role="status">
-  <span #ULoading class="sr-only">Loading...</span>
+  <span id="ULoading" class="sr-only">Loading...</span>
 </div>
-<p #UError *ngIf="error != ''" class="alert alert-warning mt-2" role="alert">{{error}}</p>
+<p id="UError" *ngIf="error != ''" class="alert alert-warning mt-2" role="alert">{{error}}</p>

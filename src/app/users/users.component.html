@@ -6,10 +6,10 @@
     <br />
     <button *ngIf="!loading" type="submit" class="btn btn-primary">Get User Information</button>
     <div *ngIf="loading" class="spinner-border" role="status">
-      <span #loading class="sr-only">Loading...</span>
+      <span id="loading" class="sr-only">Loading...</span>
     </div>
   </form>
-  <div #error *ngIf="error != ''" class="alert alert-warning" role="alert">
+  <div id="error" *ngIf="error != ''" class="alert alert-warning" role="alert">
     {{error}}
   </div>
   <app-user *ngIf="user != null" [user]="user"></app-user>
