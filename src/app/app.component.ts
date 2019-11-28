@@ -24,19 +24,18 @@ export class AppComponent implements OnInit {
         case NavigationCancel:
         case NavigationError: {
           this.loading = false;
+
+          //focus on designated focus element (usally page header)
+          const focusElement = document.querySelector('#focusElement') as HTMLElement
+          if (focusElement) {
+            focusElement.tabIndex = -1;
+            focusElement.focus();
+          }
           break;
         }
         default: {
           break;
         }
-      }
-    });
-
-    this.router.events.pipe(filter(e => e instanceof NavigationEnd)).subscribe(() => {
-      const focusElement = document.querySelector('#focusElement') as HTMLElement
-      if (focusElement) {
-        focusElement.tabIndex = -1;
-        focusElement.focus();
       }
     });
   }
