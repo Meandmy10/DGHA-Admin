@@ -1,0 +1,20 @@
+/* You can add global styles to this file, and also import other style files */
+
+// Bootstrap colour overrides
+$primary:       #0f53b9;
+$success:       #007E33;
+$info:          #0099CC;
+$warning:       #FF8800;
+$danger:        #CC0000;
+
+$theme-color-interval: 9%;
+
+/* import bootstrap css */
+@import "../node_modules/bootstrap//scss/bootstrap.scss";
+
+main {
+    margin-left: 2vw;
+    margin-right: 2vw;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+}

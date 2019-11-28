@@ -16,6 +16,5 @@ nav{
       /* On small screens, we are no longer using row direction but column */
       flex-direction: column;
       justify-content: space-around;
-      align-content: flex-start;
     }
   }
