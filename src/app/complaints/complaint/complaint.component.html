@@ -20,7 +20,7 @@
       <label for="comment" class="mt-2">Details: </label>
       <textarea (ngModelChange)="onChange()" class="form-control mb-3" [(ngModel)]="complaint.comment" rows="3" name="Comment" id="comment"></textarea>
       <!-- <div style="display: flex;"> -->
-        <button [disabled]="edited" type="submit" class="btn btn-primary">Update</button>
+        <button [disabled]="!edited" type="submit" class="btn btn-primary">Update</button>
         <span style="flex-grow: 1;"></span>
         <button type="button" class="btn btn-danger" (click)="onClick()">Delete</button>
       <!-- </div> -->
