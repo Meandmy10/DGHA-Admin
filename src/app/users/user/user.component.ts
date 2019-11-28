@@ -26,6 +26,7 @@ export class UserComponent implements OnInit {
     //focus on loading element
     const focusElement = document.querySelector('#ULoading') as HTMLElement
     if (focusElement) {
+      focusElement.tabIndex = -1;
       focusElement.focus();
     }
 
@@ -39,6 +40,7 @@ export class UserComponent implements OnInit {
         //focus on error
         const focusElement = document.querySelector('#UError') as HTMLElement
         if (focusElement) {
+          focusElement.tabIndex = -1;
           focusElement.focus();
         }
         
@@ -52,6 +54,7 @@ export class UserComponent implements OnInit {
       //focus on button
       const focusElement = document.querySelector('#UButton') as HTMLElement
       if (focusElement) {
+        focusElement.tabIndex = -1;
         focusElement.focus();
       }
     });
@@ -63,6 +66,7 @@ export class UserComponent implements OnInit {
     //focus on loading element
     const focusElement = document.querySelector('#ULoading') as HTMLElement
     if (focusElement) {
+      focusElement.tabIndex = -1;
       focusElement.focus();
     }
 
@@ -76,6 +80,7 @@ export class UserComponent implements OnInit {
         //focus on error
         const focusElement = document.querySelector('#UError') as HTMLElement
         if (focusElement) {
+          focusElement.tabIndex = -1;
           focusElement.focus();
         }
         
@@ -89,6 +94,7 @@ export class UserComponent implements OnInit {
       //focus on button
       const focusElement = document.querySelector('#UButton') as HTMLElement
       if (focusElement) {
+        focusElement.tabIndex = -1;
         focusElement.focus();
       }
     });

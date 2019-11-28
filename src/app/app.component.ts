@@ -35,6 +35,7 @@ export class AppComponent implements OnInit {
     this.router.events.pipe(filter(e => e instanceof NavigationEnd)).subscribe(() => {
       const focusElement = document.querySelector('#focusElement') as HTMLElement
       if (focusElement) {
+        focusElement.tabIndex = -1;
         focusElement.focus();
       }
     });

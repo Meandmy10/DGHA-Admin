@@ -25,6 +25,7 @@ export class UsersComponent implements OnInit {
     //focus on loading element
     const focusElement = document.querySelector('#loading') as HTMLElement
     if (focusElement) {
+      focusElement.tabIndex = -1;
       focusElement.focus();
     }
 
@@ -45,6 +46,7 @@ export class UsersComponent implements OnInit {
         //focus on error message
         const focusElement = document.querySelector('#error') as HTMLElement
         if (focusElement) {
+          focusElement.tabIndex = -1;
           focusElement.focus();
         }
 
@@ -57,6 +59,7 @@ export class UsersComponent implements OnInit {
       //focus on loaded user title
       const focusElement = document.querySelector('#userTitle') as HTMLElement
       if (focusElement) {
+        focusElement.tabIndex = -1;
         focusElement.focus();
       }
     })

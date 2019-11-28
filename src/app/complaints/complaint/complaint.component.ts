@@ -30,6 +30,7 @@ export class ComplaintComponent implements OnInit {
     //focus on loading element
     const focusElement = document.querySelector(`#loading.${this.complaint.placeID}.${this.complaint.userID}`) as HTMLElement
     if (focusElement) {
+      focusElement.tabIndex = -1;
       focusElement.focus();
     }
 
@@ -59,6 +60,7 @@ export class ComplaintComponent implements OnInit {
     //focus on loading element
     const focusElement = document.querySelector(`#loading.${this.complaint.placeID}.${this.complaint.userID}`) as HTMLElement
     if (focusElement) {
+      focusElement.tabIndex = -1;
       focusElement.focus();
     }
 

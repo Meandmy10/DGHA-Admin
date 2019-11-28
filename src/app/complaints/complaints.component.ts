@@ -35,6 +35,7 @@ export class ComplaintsComponent implements OnInit {
     //focus on loading element
     const focusElement = document.querySelector('#RCLoader') as HTMLElement
     if (focusElement) {
+      focusElement.tabIndex = -1;
       focusElement.focus();
     }
     
@@ -46,6 +47,7 @@ export class ComplaintsComponent implements OnInit {
         //focus on first resolved complaint title
         const focusElement = document.querySelector(`#title.${complaints[0].placeID}.${complaints[0].userID}`) as HTMLElement
         if (focusElement) {
+          focusElement.tabIndex = -1;
           focusElement.focus();
         }
       }

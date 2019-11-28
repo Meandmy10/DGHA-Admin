@@ -26,6 +26,7 @@ export class PlaceComponent implements OnInit {
     //to anchor screen reader back to page after element is removed
     const focusElement = document.querySelector('#focusElement') as HTMLElement
     if (focusElement) {
+      focusElement.tabIndex = -1;
       focusElement.focus();
     }
   }
