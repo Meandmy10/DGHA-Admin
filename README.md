@@ -33,7 +33,7 @@ If you are planning on trying to get the DGHA system running there are a few thi
 2. The AuthService (src>app>auth>auth.service.ts) `getClientSettings()` function has the correct url for the hosted admin application
 3. The callback url and the cors rules are the same on the Identity Server (more details on [DGHA-backend](https://github.com/Meandmy10/DGHA-Backend) readme)
 
-Note: the IsDevMode() check is there because it is assumed you are running the backend system locally in a development enviroment
+Note: the IsDevMode() check is there because it is assumed you are running the backend system locally in a development environment
 
 ## Deployment
 
