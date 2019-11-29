@@ -15,6 +15,7 @@ export class ComplaintComponent implements OnInit {
   lastUpdated: Date;
   public Loading: boolean;
   edited: boolean;
+  private originalStatus: string;
 
 
   constructor(public complaintsService: ComplaintsService) { }
@@ -22,6 +23,7 @@ export class ComplaintComponent implements OnInit {
   ngOnInit() {
     this.timeAdded = parseISO(this.complaint.timeSubmitted);
     this.lastUpdated = parseISO(this.complaint.timeLastUpdated);
+    this.originalStatus = this.complaint.status;
   }
 
   onSubmit() {
@@ -37,6 +39,7 @@ export class ComplaintComponent implements OnInit {
     if(this.complaint.status == "Newly Created"){
       this.complaint.status = "Pending";
     }
+
     this.complaintsService.PutComplaint(this.complaint.placeID, this.complaint.userID, this.complaint.timeSubmitted, this.complaint).subscribe(complaint => {
       console.log("Complaint Updated", complaint);
       this.complaint.status = complaint.status;
@@ -44,7 +47,7 @@ export class ComplaintComponent implements OnInit {
       this.complaint.timeLastUpdated = complaint.timeLastUpdated;
       this.lastUpdated = parseISO(this.complaint.timeLastUpdated);
       
-      if(complaint.status == "Resolved"){
+      if(complaint.status != this.originalStatus){
         this.deleted.emit(this.complaint);
       }
       else{
