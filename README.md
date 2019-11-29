@@ -34,3 +34,7 @@ If you are planning on trying to get the DGHA system running there are a few thi
 3. The callback url and the cors rules are the same on the Identity Server (more details on [DGHA-backend](https://github.com/Meandmy10/DGHA-Backend) readme)
 
 Note: the IsDevMode() check is there because it is assumed you are running the backend system locally in a development enviroment
+
+## Deployment
+
+Details on how to deploy angular app can be found [here](https://angular.io/guide/deployment)
