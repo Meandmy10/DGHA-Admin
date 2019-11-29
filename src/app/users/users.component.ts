@@ -23,7 +23,7 @@ export class UsersComponent implements OnInit {
   onSubmit(){
     this.loading = true;
     //focus on loading element
-    const focusElement = document.querySelector('#loading') as HTMLElement
+    const focusElement = document.getElementById('loading') as HTMLElement
     if (focusElement) {
       focusElement.tabIndex = -1;
       focusElement.focus();
@@ -44,7 +44,7 @@ export class UsersComponent implements OnInit {
         }
         
         // focus on error message
-        const focusElement = document.querySelector('#error') as HTMLElement
+        const focusElement = document.getElementById('error') as HTMLElement
         if (focusElement) {
           focusElement.tabIndex = -1;
           focusElement.focus();
@@ -57,7 +57,7 @@ export class UsersComponent implements OnInit {
       this.user = user;
       
       //focus on loaded user title
-      const focusElement = document.querySelector('#userTitle') as HTMLElement
+      const focusElement = document.getElementById('userTitle') as HTMLElement
       if (focusElement) {
         focusElement.tabIndex = -1;
         focusElement.focus();

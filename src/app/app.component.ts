@@ -26,7 +26,7 @@ export class AppComponent implements OnInit {
           this.loading = false;
 
           //focus on designated focus element (usally page header)
-          const focusElement = document.querySelector('#focusElement') as HTMLElement
+          const focusElement = document.getElementById('#focusElement') as HTMLElement
           if (focusElement) {
             focusElement.tabIndex = -1;
             focusElement.focus();

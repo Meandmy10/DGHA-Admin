@@ -24,7 +24,7 @@ export class UserComponent implements OnInit {
     this.loading = true;
 
     //focus on loading element
-    const focusElement = document.querySelector('#ULoading') as HTMLElement
+    const focusElement = document.getElementById('ULoading') as HTMLElement
     if (focusElement) {
       focusElement.tabIndex = -1;
       focusElement.focus();
@@ -38,7 +38,7 @@ export class UserComponent implements OnInit {
         this.error = "Error, Please Try Again Later.";
 
         //focus on error
-        const focusElement = document.querySelector('#UError') as HTMLElement
+        const focusElement = document.getElementById('UError') as HTMLElement
         if (focusElement) {
           focusElement.tabIndex = -1;
           focusElement.focus();
@@ -52,7 +52,7 @@ export class UserComponent implements OnInit {
       console.log("Added Admin Role");
       
       //focus on button
-      const focusElement = document.querySelector('#UButton') as HTMLElement
+      const focusElement = document.getElementById('UButton') as HTMLElement
       if (focusElement) {
         focusElement.tabIndex = -1;
         focusElement.focus();
@@ -64,7 +64,7 @@ export class UserComponent implements OnInit {
     this.loading = true;
 
     //focus on loading element
-    const focusElement = document.querySelector('#ULoading') as HTMLElement
+    const focusElement = document.getElementById('ULoading') as HTMLElement
     if (focusElement) {
       focusElement.tabIndex = -1;
       focusElement.focus();
@@ -78,7 +78,7 @@ export class UserComponent implements OnInit {
         this.error = "Error, Please Try Again Later.";
 
         //focus on error
-        const focusElement = document.querySelector('#UError') as HTMLElement
+        const focusElement = document.getElementById('UError') as HTMLElement
         if (focusElement) {
           focusElement.tabIndex = -1;
           focusElement.focus();
@@ -92,7 +92,7 @@ export class UserComponent implements OnInit {
       console.log("Removed Admin Role");
 
       //focus on button
-      const focusElement = document.querySelector('#UButton') as HTMLElement
+      const focusElement = document.getElementById('UButton') as HTMLElement
       if (focusElement) {
         focusElement.tabIndex = -1;
         focusElement.focus();

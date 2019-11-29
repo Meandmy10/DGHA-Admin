@@ -33,7 +33,7 @@ export class ComplaintsComponent implements OnInit {
     this.loading = true;
 
     //focus on loading element
-    const focusElement = document.querySelector('#RCLoader') as HTMLElement
+    const focusElement = document.getElementById('RCLoader') as HTMLElement
     if (focusElement) {
       focusElement.tabIndex = -1;
       focusElement.focus();
@@ -45,7 +45,7 @@ export class ComplaintsComponent implements OnInit {
       this.loading = false;
       if(complaints.length > 0) {
         //focus on first resolved complaint title
-        const focusElement = document.querySelector(`#title.${complaints[0].placeID}.${complaints[0].userID}`) as HTMLElement
+        const focusElement = document.getElementById(`#title.${complaints[0].placeID}.${complaints[0].userID}`) as HTMLElement
         if (focusElement) {
           focusElement.tabIndex = -1;
           focusElement.focus();
