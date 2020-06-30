@@ -1,6 +1,18 @@
-# DGHAAdmin
+# DGHA Admin
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.9.
+This is the admin application for the DGHA project which was the final and largest project for my Software Development Diploma.
+
+These are the other sections of the project:
+- [Mobile App](https://github.com/leechuyem/dgha)
+- [Backend API](https://github.com/jamtowers/DGHA-Backend)
+
+This project was made with the help of these fine folks:
+- [Joseph Khai](https://github.com/josephkhaipi)
+- [Lee Chu Yem](https://github.com/leechuyem)
+- [Matthew Thorne](https://github.com/Thornie)
+- [James Towers](https://github.com/jamtowers) (Hey that's me!)
+
+<sub>This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.9.</sub>
 
 ## Development server
 
@@ -31,7 +43,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 If you are planning on trying to get the DGHA system running there are a few things you need to make sure of:
 1. The config file (src>app>config.ts) has the correct urls (ie. so they point towards where your hosting the API and Identity server)
 2. The AuthService (src>app>auth>auth.service.ts) `getClientSettings()` function has the correct url for the hosted admin application
-3. The callback url and the cors rules are the same on the Identity Server (more details on [DGHA-backend](https://github.com/Meandmy10/DGHA-Backend) readme)
+3. The callback url and the cors rules are the same on the Identity Server (more details on [DGHA-backend](https://github.com/jamtowers/DGHA-Backend) readme)
 
 Note: the IsDevMode() check is there because it is assumed you are running the backend system locally in a development environment
 
